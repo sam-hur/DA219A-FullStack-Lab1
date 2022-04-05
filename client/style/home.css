@@ -1,0 +1,30 @@
+#banner {
+    background-color: burlywood;
+    height: 130px;
+    width: 102%;
+    margin-left: -9px;
+}
+
+#banner h1 {
+    padding-top: 50px;
+    margin-left: 45vw;
+}
+
+li {
+    padding: 5px;
+    font-size: 1.2em;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+strong {
+    color: cornflowerblue;
+    font-size: 1.01em;
+}
+
+.header-cell {
+    background-color: azure;
+}

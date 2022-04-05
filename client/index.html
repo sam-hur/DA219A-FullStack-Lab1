@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/master_stylesheet.css">
+    <link rel="stylesheet" href="/style/home.css">
+    <script src="/script/home.js"> // script that loads rest of table </script>
+    <title>Lab 1 | Homepage</title>
+</head>
+
+<body>
+    <section id="homepage">
+        <div id="banner">
+            <h1>HOMEPAGE</h1>
+        </div>
+        <ul>
+            <li><a href="http://localhost:3000/api/user/create"><strong>Create</strong> a new user</a></li>
+            <li><a href="http://localhost:3000/api/user/lookup"><strong>Look up</strong> an existing user</a></li>
+            <li><a href="http://localhost:3000/api/users"><strong>View all</strong> users</a></li>
+        </ul>
+        <table id="user-table">
+            <tr>
+                <th id="id">ID</th>
+                <th id="name">Name</th>
+                <th id="age">Age</th>
+            </tr>
+            <section id="table-data"></section>
+        </table>
+    </section>
+</body>
+
+</html>

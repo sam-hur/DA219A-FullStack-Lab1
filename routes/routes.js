@@ -1,63 +1,111 @@
+// api routes
 const express = require("express")
-const Post = require('../model/User.js') // new
+const { db } = require("../model/User.js")
+const User = require('../model/User.js') // new
 const router = express.Router()
 
 
-// post
-router.post("/posts", async (req, res) => {
-    const post = new Post({
-        title: req.body.title,
-        content: req.body.content,
-    })
-    await post.save()
-    res.send(post)
-})
 
-
-// Get all posts
-router.get("/posts", async (_, res) => {
-    const posts = await Post.find()
-    res.send(posts)
-})
-
-// get specific post
-router.get("/posts/:id", async (req, res) => {
+// post user to database
+router.post("/user/register", async (req, res) => {
+    if (!req.body.name) {
+        return res.status(400).json({ error: "Name is undefined" })
+    }
+    else if (!req.body.age) {
+        return res.status(400).json({ error: "Age is undefined" })
+    }
+    let newID = undefined;
     try {
-        const post = await Post.findOne({ _id: req.params.id })
-        res.send(post)
-    } catch {
-        res.status(404)
-        res.send({ error: "Post doesn't exist!" })
+        newID = (await db.collection('counters').findOne()).seq + 1
+    }
+    catch (error) {
+        if (!newID) newID == 1
+    }
+    const user = new User({
+        userID: newID,
+        name: req.body.name,
+        age: req.body.age,
+    })
+    await user.save()
+    try {
+        res.send(user)
+        console.log(`\n--------NEW USER CREATED--------`)
+        console.log(`--------------------------------`)
+        console.log(`Assigned userID : \t${newID}`)
+        console.log(`Name : \t\t\t${req.body.name}`)
+        console.log(`Age : \t\t\t${req.body.age}`)
+        console.log(`--------------------------------`)
+    } catch (error) {
+        return res.status(409).send({ error: "Account already exists." })
     }
 })
 
-// "patch" to update a post
-router.patch("/posts/:id", async (req, res) => {
+
+// Get all users
+router.get("/users", async (_, res) => {
+    const users = await User.find()
+    res.send(users)
+})
+
+
+router.get('/user/lookup', async (req, res) => {
+    res.sendFile(`${process.cwd()}/client/lookup_user.html`)
+})
+
+
+// get specific user
+router.get("/user/lookup/:id", async (req, res) => {
     try {
-        const post = await Post.findOne({ _id: req.params.id })
-        if (req.body.title) {
-            post.title = req.body.title
-        }
-        if (req.body.content) {
-            post.content = req.body.content
-        }
-        await post.save()
-        res.send(post)
+        const user = await User.findOne({ userID: req.params.id })
+        res.send(user)
     } catch {
         res.status(404)
-        res.send({ error: "Post doesn't exist!" })
+        res.send({ error: "User doesn't exist!" })
+    }
+})
+
+
+// "patch" to update a user
+router.patch("/user/lookup/:id", async (req, res) => {
+    try {
+        const user = await User.findOne({ _id: req.params.id })
+        if (req.body.title) {
+            user.title = req.body.title
+        }
+        if (req.body.content) {
+            user.content = req.body.content
+        }
+        await user.save()
+        res.send(user)
+    } catch {
+        res.status(404)
+        res.send({ error: "User doesn't exist!" })
     }
 })
 
 // delete
-router.delete("/posts/:id", async (req, res) => {
+router.delete("/users/lookup/:id", async (req, res) => {
     try {
-        await Post.deleteOne({ _id: req.params.id })
+        await User.deleteOne({ _id: req.params.id })
         res.status(204).send()
     } catch {
         res.status(404)
-        res.send({ error: "Post doesn't exist!" })
+        res.send({ error: "User doesn't exist!" })
     }
+})
+
+router.get('/user/create', (_, res) => {
+    res.sendFile(`${process.cwd()}/client/create_user.html`)
+})
+
+router.get('/', (_, res) => {
+    res.sendFile(`${process.cwd()}/client/lookup_user.html`)
+})
+
+router.get("/users/gettable", async (_, res) => {
+    const users = User.find()
+    console.log(users)
+    res.send(users)
 })
 
 module.exports = router

@@ -1,0 +1,44 @@
+a {
+    text-decoration: none;
+}
+
+input {
+    margin-bottom: 5px;
+}
+
+section {
+    position: absolute;
+    float: left;
+    background-color: bisque;
+    border: 2px solid blanchedalmond;
+    box-shadow: 3px 4px 5px rosybrown;
+    width: 335px;
+    height: 265px;
+    border-radius: 5px;
+    left: 40%;
+    top: 30%;
+}
+
+section form,
+section h1 {
+    margin-top: 25px;
+    padding-left: 75px;
+}
+
+#btn-submit {
+    font-weight: bold;
+    font-size: 1.01em;
+    margin-right: 45px;
+}
+
+label {
+    position: absolute;
+    font-style: italic;
+}
+
+h5 {
+    position: absolute;
+    float: left;
+    top: 28%;
+    left: 40.5vw;
+}
