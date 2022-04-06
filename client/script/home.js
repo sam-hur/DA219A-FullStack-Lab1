@@ -1,4 +1,4 @@
-const setTable = async () => await fetch('/api/users/', {
+const drawTable = async () => await fetch('/api/users/', {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json'
@@ -14,6 +14,10 @@ const setTable = async () => await fetch('/api/users/', {
             utilityRow = table.insertRow()
             utilityRow.insertCell()
             utilityRow.appendChild(btn_add)
+            btn_add.addEventListener('click', event =>{
+                event.preventDefault()
+                window.location.href = 'http://localhost:3000/api/user/create'
+            })
         }
         
         addUtilityRow()
@@ -47,8 +51,6 @@ const setTable = async () => await fetch('/api/users/', {
             let td_view = row.insertCell()
             td_view.className = 'view'
             td_view.appendChild(btn_view)
-            // ! -- TODO - Add event listener for this button
-            // btn_view.removeEventListener()
             btn_view.addEventListener('click', event => {
                 event.preventDefault()
                 window.location.href = `/api/user/lookup/${user.userID}`
@@ -64,7 +66,12 @@ const setTable = async () => await fetch('/api/users/', {
                 event.preventDefault()
                 alert('Edit pressed!')
                 // ! -- TODO - do a PUT for updating the user, or redirect to a page where the user may do an edit
-                setTable() // recursive call for immediate refresh              
+                // what do I need for a PUT command? 
+                // 1. change name, age? Dropdown/radiobuttons + input next to boxes?
+                // 2. read input, make the PUT using this existing user object. Update this on db, not locally.
+                // 3. Refresh table (already done below)
+                // 
+                drawTable() // recursive call for immediate refresh              
             })
             
             // del --
@@ -75,15 +82,20 @@ const setTable = async () => await fetch('/api/users/', {
             btn_del.addEventListener('click', event => {
                 event.preventDefault()
                 alert('Delete pressed!')
-                //! -- TODO - do a DELETE HTTP request for deleting this entry from the db 
+                //! -- TODO - do a DELETE HTTP request for deleting this entry from the db
+                // what do I need for a DELETE command? 
+                // 1. confirmation buttons? Checkmark | X?
+                // 2. Send HTTP DELETE request to backend api.
+                // 3. Refresh table(already done below)
+                drawTable()
             }) 
         })
         addUtilityRow()
     })
     .then(console.log('fetched latest changes!'))
 
-setTable() // set table at startup
-setInterval(function () { setTable() }, 4500) // refresh every 4.5sec
+drawTable() // set table at startup
+setInterval(function () { drawTable() }, 4500) // refresh every 4.5sec
 
 
 function buttonFactory(tdClassname, btnInnerHTML ){
