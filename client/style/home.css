@@ -10,6 +10,17 @@
     margin-left: 45vw;
 }
 
+#table-section{
+    display: flex;
+    justify-content: center;
+    margin: 0 305px;
+    border: 2px solid gold;
+    padding: 5%;
+    background-color: aliceblue;
+    min-width: 150px;
+}
+
+
 li {
     padding: 5px;
     font-size: 1.2em;
@@ -25,6 +36,33 @@ strong {
     font-size: 1.01em;
 }
 
+
 .header-cell {
-    background-color: azure;
+    border-bottom: 1px solid grey;
+    font-weight: bold;
+    font-size: 1.15em;
+}
+
+.column-1{
+    width: 5vw;
+}
+
+.column-2{
+    width: 23vw;
+}
+
+.column-3{
+    width: auto;
+}
+
+.view, .edit, .del{
+    padding-bottom: 12.5px;
+}
+
+.btn-add{
+    /* background: 1px sol;
+    border: none; */
+    margin-left: -23%;
+    margin-bottom: 5%;
+    
 }
