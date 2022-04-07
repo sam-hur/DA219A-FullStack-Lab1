@@ -12,6 +12,7 @@ mongoose.connect(
     useUnifiedTopology: true
 })
     .then(() => {
+        console.log("You have been successfully connected to the Database!")
         const app = express()
         app.use(express.json()) // middleware
         app.use(express.static('client'))

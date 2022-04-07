@@ -1,23 +1,77 @@
-#banner {
-    background-color: burlywood;
-    height: 130px;
-    width: 102%;
-    margin-left: -9px;
+#banner-group{
+    position: relative;
+    width: 900px;
+    margin: 0 auto;
+    height: 100px;
+    z-index: -1;
+    padding-left: 140px;    
 }
 
+#banner, #banner-aid, #banner-aid2 {
+    position: absolute;
+    display: inline-block;
+    justify-content: flex-end;
+    margin: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* border-bottom: 50px solid linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(120,9,121,1) 100%, rgba(0,212,255,1) 100%); */
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    height: 50px;
+    width: 375px;
+    text-align: center;    
+}
+
+#banner-aid, #banner-aid2, #banner{
+    border-bottom: 75px solid grey;
+    /* background-color: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(120,9,121,1) 100%, rgba(0,212,255,1) 100%); */
+    /* background-image: url('../assets/banner_background.jpg'); */
+    /* background */
+}
+
+#banner{
+    color: white;
+    transform: scaleY(1.1);
+    margin-left: 135px;
+    margin-top: -25px;
+    z-index: 1
+
+}
+
+
+#banner-aid{
+    margin: 0 auto auto 300px;
+    z-index: 0;
+}
+
+#banner-aid2{
+    margin-right: -75px 300px 0 auto;
+    z-index: 0
+}
+
+
 #banner h1 {
+    position: relative;
     padding-top: 50px;
-    margin-left: 45vw;
+    z-index: 2;
+}
+#banner h1:hover{
+    transform: scaleY(1.25);
+    transform-origin: bottom;
 }
 
 #table-section {
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    border: 2px solid gold;
+    border: 3px solid rgba(243, 0, 0, 0.4);
     padding: 5%;
     background-color: aliceblue;
     width: 750px;
+    box-shadow: 0 0 12px rgb(0, 255, 179);
+    border-radius: 12px;
+    margin-top: -15px;
 }
 
 #table-section table {
