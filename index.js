@@ -7,7 +7,7 @@ const routes = require('./routes/routes.js')
 const uri = process.env.DB_CONNECT || "mongodb+srv://samroot:sampass@sam-db.spny2.mongodb.net/DA219A-Lab1?retryWrites=true&w=majority"
 // const pages = require('./routes/pages.js')
 mongoose.connect(
-    process.env.DB_CONNECT.toString(), {
+    uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
