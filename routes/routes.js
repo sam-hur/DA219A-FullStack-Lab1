@@ -65,15 +65,15 @@ router.get("/user/lookup/:id", async (req, res) => {
 })
 
 
-// "patch" to update a user
-router.patch("/user/lookup/:id", async (req, res) => {
+// "update" to update a user
+router.put("/user/lookup/:id", async (req, res) => {
     try {
-        const user = await User.findOne({ _id: req.params.id })
-        if (req.body.title) {
-            user.title = req.body.title
+        const user = await User.findOne({ userID: req.params.id })
+        if (req.body.name) {
+            user.name = req.body.name
         }
-        if (req.body.content) {
-            user.content = req.body.content
+        if (req.body.age) {
+            user.age = req.body.age
         }
         await user.save()
         res.send(user)
@@ -85,8 +85,11 @@ router.patch("/user/lookup/:id", async (req, res) => {
 
 // delete
 router.delete("/users/lookup/:id", async (req, res) => {
+    console.log("arrivé!")
     try {
-        await User.deleteOne({ _id: req.params.id })
+        console.log("delete commencing...")
+        await User.deleteOne({ userID: req.params.id })
+        console.log("delete done")
         res.status(204).send()
     } catch {
         res.status(404)

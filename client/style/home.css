@@ -10,14 +10,18 @@
     margin-left: 45vw;
 }
 
-#table-section{
+#table-section {
     display: flex;
     justify-content: center;
-    margin: 0 305px;
+    margin: 0 auto;
     border: 2px solid gold;
     padding: 5%;
     background-color: aliceblue;
-    min-width: 150px;
+    width: 750px;
+}
+
+#table-section table {
+    max-width: 100px;
 }
 
 
@@ -36,6 +40,13 @@ strong {
     font-size: 1.01em;
 }
 
+button {
+    height: 20px;
+    width: 20px;
+    background-color: aliceblue;
+    margin-right: 10px;
+}
+
 
 .header-cell {
     border-bottom: 1px solid grey;
@@ -43,26 +54,101 @@ strong {
     font-size: 1.15em;
 }
 
-.column-1{
+.column-1 {
     width: 5vw;
 }
 
-.column-2{
-    width: 23vw;
+.column-2 {
+    width: 12vw;
 }
 
-.column-3{
+.column-4,
+.column-5,
+.column-6 {
     width: auto;
 }
 
-.view, .edit, .del{
+.view,
+.edit,
+.del {
     padding-bottom: 12.5px;
 }
 
-.btn-add{
-    /* background: 1px sol;
-    border: none; */
-    margin-left: -23%;
-    margin-bottom: 5%;
-    
+.view button,
+.view-all {
+    background-image: url("../assets/view2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+}
+
+.edit button,
+.edit-all {
+    background-image: url("../assets/edit2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+}
+
+.del button {
+    border: none;
+    background-image: url("../assets/delete2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+input,
+.btn-accept,
+.btn-decline,
+.text-input {
+    margin-bottom: 12.5px;
+}
+
+.text-input {
+    margin: 0 10px;
+}
+
+.btn-decline {
+    border: none;
+    background-image: url("../assets/decline.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btn-accept {
+    border: none;
+    background-image: url("../assets/checkmark.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btn-add {
+    border: none;
+    background-image: url("../assets/create.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.lbl-create {
+    position: relative;
+}
+
+.div-create {
+    width: 160px;
+    height: 50px;
+}
+
+.div-create button {
+    margin-right: 10px;
+}
+
+.util-top {
+    position: relative;
+    border: 5px solid gold;
+    margin-top: -80px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: gainsboro
 }
