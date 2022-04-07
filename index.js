@@ -1,12 +1,14 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const open = require('open')
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 const routes = require('./routes/routes.js')
 const pages = require('./routes/pages')
 
+require('dotenv').config()
+
 mongoose.connect(
-    'mongodb+srv://samroot:sampass@sam-db.spny2.mongodb.net/DA219A-Lab1?retryWrites=true&w=majority', {
+    String(process.env.DB_CONNECT), {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -20,6 +22,6 @@ mongoose.connect(
         app.use("/api", routes)  // api routes
         app.listen(PORT, () => {
             console.log(`Server has started. Listening on port ${PORT}!`)
-            // open(`http://localhost:${PORT}/`) // opens browser on starting NodeJS app.
+            open(`http://localhost:${PORT}/`) // opens browser on starting NodeJS app.
         })
     })

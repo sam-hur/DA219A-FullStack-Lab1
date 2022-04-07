@@ -38,6 +38,10 @@ const drawTable = async () => await fetch('/api/users/', {
             const viewAll = utilityRow.insertCell()
             const viewAllBtn = document.createElement('button')
             viewAllBtn.className = 'view-all'
+
+            lbl.addEventListener("click", _ => {
+                window.location.href = "/api/user/create"
+            })
             viewAllBtn.addEventListener("click", _ => {
                 window.location.href = "/api/users/"
             })
