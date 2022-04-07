@@ -85,7 +85,6 @@ router.put("/user/lookup/:id", async (req, res) => {
 
 // delete
 router.delete("/users/lookup/:id", async (req, res) => {
-    console.log("arrivé!")
     try {
         await User.deleteOne({ userID: req.params.id })
         res.status(204).send()
